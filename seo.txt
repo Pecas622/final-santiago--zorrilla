@@ -1,0 +1,7 @@
+cree el esqueleto
+linkee todas mis paginas
+inicie git
+sass-css
+edite el carrousel 
+cambie un poco los estilos
+cambie el footer
