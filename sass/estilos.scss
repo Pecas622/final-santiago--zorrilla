@@ -9,9 +9,9 @@ $font-bienvenida: "Merriweather", serif;
 $button-background-color: darken($header-background-color, 10%);
 $button-hover-color: darken($header-background-color, 20%);
 $button-text-color: $header-text-color;
-$card-text-color: #ff6347; //color del texto de la tarjeta
-$card-width: 200px; // ancho de la tarjeta
-$card-height: 300px; //altura de la tarjeta
+$card-text-color: #ff6347;
+$card-width: 200px;
+$card-height: 300px;
 $footer-bg-color: #333;
 $footer-text-color: #b4a3a3;
 $footer-link-color: #fffefe;
@@ -20,6 +20,8 @@ $footer-social-icon-size: 20px;
 // estilos.scss
 
 
+@import 'variables';
+
 * {
     margin: 0;
     padding: 0;
@@ -27,19 +29,12 @@ $footer-social-icon-size: 20px;
 }
 
 body {
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
     background-color: $background-color;
     color: $text-color;
-
 }
 
 header {
     height: 200px;
-
     margin-bottom: 1rem;
 
     .logo,
@@ -54,55 +49,64 @@ header {
 
     .encabezado {
         font-family: $font-encabezado;
-        font-size: 2rem; 
+        font-size: 2rem;
     }
 
     .bienvenida {
         font-family: $font-bienvenida;
-        font-size: 1.5rem; 
+        font-size: 1.5rem;
     }
 }
 
-// estilos para la barra de navegación
 .nav-bar {
-    background-color: $nav-background-color;
+    background-color: $header-background-color;
     display: flex;
-    justify-content: center; // centrar los elementos dentro de la barra de navegación
+    justify-content: center;
     padding: 1rem;
 
     .nav-link {
-        color: $nav-link-color;
+        color: $header-text-color;
         margin: 0 1rem;
         text-decoration: none;
 
         &:hover {
-            color: $nav-link-hover-color;
+            color: $hover-color;
         }
     }
 
     &:hover {
         background-color: $hover-color;
         color: darken($header-text-color, 10%);
-        transform: scale(1.05); // Efecto de zoom
+        transform: scale(1.05);
     }
 }
 
-// container 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
     .row {
         width: 100%;
         margin: 0;
-    
+
+        .col {
+            display: flex;
+            justify-content: center;
+        }
+
         .card {
-            height: 100%;
+            width: $card-width;
+            min-height: $card-height;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+                transform: scale(1.10);
+            }
+
+            .card-img-top {
+                height: 150px;
+                object-fit: cover;
+            }
 
             .card-body {
                 display: flex;
@@ -110,10 +114,8 @@ header {
                 align-items: center;
                 justify-content: space-between;
 
-                .img-fluid {
-                    max-width: 100%;
-                    height: auto;
-                    margin-bottom: 1rem;
+                .card-title {
+                    color: $card-text-color;
                 }
 
                 .btn {
@@ -123,9 +125,20 @@ header {
         }
     }
 }
-
-// container 
-// Jumbotron
+h1.text-center.mb-4 {
+    font-family: $font-family;
+    font-size: $font-size;
+    color: $text-color;
+    background-color: $background-color;
+    padding: $padding;
+    border-radius: $border-radius;
+    margin-bottom: $margin-bottom;
+    text-transform: uppercase; 
+    text-align: center; 
+    &:hover {
+        transform: scale(1.10);
+    }
+}
 .jumbotron {
     background-color: $header-background-color;
     color: $header-text-color;
@@ -135,7 +148,6 @@ header {
     margin-bottom: 1rem;
 }
 
-// Carrusel
 .carousel {
     margin: 0;
 
@@ -168,11 +180,9 @@ header {
     }
 }
 
-// Footer
-
 footer {
-    background-color: #343a40;
-    color: #fff;
+    background-color: $footer-bg-color;
+    color: $footer-text-color;
     padding-top: 1rem;
 
     h5 {
@@ -187,7 +197,7 @@ footer {
     ul {
         padding: 0;
         list-style: none;
-        
+
         li {
             margin-bottom: 0.5rem;
             display: inline-block;
@@ -197,11 +207,12 @@ footer {
             }
 
             a {
-                color: #fff;
+                color: $footer-link-color;
                 text-decoration: none;
 
                 &:hover {
                     text-decoration: underline;
+                    color: $footer-link-hover-color;
                 }
             }
         }
@@ -212,7 +223,7 @@ footer {
     }
 
     .text-white {
-        color: #fff !important;
+        color: $footer-link-color !important;
 
         &.me-3 {
             margin-right: 1rem !important;
@@ -235,30 +246,6 @@ footer {
     .fa-2x {
         font-size: 2rem;
     }
-}
-
-// Cards
-.card {
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out; //transición a la tarjeta
-    margin: 0;
-    padding: 1rem;
-    &:hover {
-        transform: scale(1.10); // Efecto de zoom en la tarjeta
-    }
-
-    .card-body {
-        .card-text {
-            color: $card-text-color; // Aplicamos el color 
-        }
-        padding: 1rem;
-    }
-
-    &-img-top {
-        transition: transform 0.3s ease-in-out;
-    }
-
 
     .parrafoFooter {
         margin-top: 1rem;
